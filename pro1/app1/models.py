@@ -7,4 +7,4 @@ class Task(models.Model):
     status = models.CharField(max_length=23, default='Created')
     deadline = models.DateTimeField()
     created = models.DateTimeField(auto_now_add=True)
-    completed = models.DateTimeField(auto_now=True)
+    completed = models.DateTimeField(auto_now=True, blank=True)

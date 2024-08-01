@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Task
-from .forms import TaskForm
+from .forms import TaskForm, TaskUpdateForm
 from datetime import datetime
 
 # Create your views here.
@@ -22,11 +22,11 @@ def showview(request):
 
 def updateview(request, pk):
     obj = Task.objects.get(id=pk)
-    form = TaskForm(instance=obj)
+    form = TaskUpdateForm(instance=obj)
     if request.method == 'POST':
         s = request.POST.get('status')
         obj.status = s
-        form = TaskForm(request.POST, instance=obj)
+        form = TaskUpdateForm(request.POST, instance=obj)
         if form.is_valid():
             form.save()
             return redirect('/a1/sv/')
