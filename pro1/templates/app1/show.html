@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Show</title>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4 p-5 rounded-5 mx-auto" style="background-color:pink;">
+    <h1 class="text-center text-danger">ToDo Tasks Details</h1>
+    <table class="table table-dark table-striped-columns mt-4">
+        <thead>
+            <tr>
+                <th>Sr. No.</th>
+                <th>Task Name</th>
+                <th>Task Description</th>
+                <th>Task Status</th>
+                <th>Task DeadLine</th>
+                <th>Task Created_at</th>
+                <th>Task Completed_on</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in obj %}
+            <tr>
+                <td>{{t.id}}</td>
+                <td>{{t.name}}</td>
+                <td>{{t.description}}</td>
+                <td>{{t.status}}</td>
+                <td>{{t.deadline}}</td>
+                <td>{{t.created}}</td>
+                <td>
+                    {% if t.status == 'Completed' %}
+                        {{t.completed}}
+                    {% else %}
+                        {{None}}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if t.status == 'Completed' %}
+                        <a href="/a1/dv/{{t.id}}/"><button class="btn btn-danger">Delete</button></a>
+                    {% else %}
+                        <a href="/a1/uv/{{t.id}}/"><button class="btn btn-warning">Update</button></a>
+                        <a href="/a1/dv/{{t.id}}/"><button class="btn btn-danger">Delete</button></a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

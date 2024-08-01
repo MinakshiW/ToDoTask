@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Update</title>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4 p-5 rounded-5 w-50 mx-auto" style="background-color:pink;">
+    <h1 class="text-center text-primary">Update Task Form</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <label class="me-2">Task Status: </label>
+        <input type="radio" name="status" value="In Progress">In Progress
+        <input type="radio" name="status" value="Completed">Completed
+        <input type="radio" name="status" value="Canceled">Canceled
+        <input type="radio" name="status" value="Pending" class="mb-4">Pending<br>
+        <input type="submit" class="btn btn-success col-6">
+        <input type="reset" class="btn btn-warning col-6 float-end">
+    </form>
+</div>
+{% endblock %}
